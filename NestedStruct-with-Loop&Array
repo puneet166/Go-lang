@@ -1,0 +1,30 @@
+package main
+
+import "fmt"
+
+type innerStruct struct {
+    localPlace [10]int
+}
+
+type outStruct struct {
+    name    string
+    age     int
+    height  float64
+    places  innerStruct
+}
+
+func init121(name string, age int, height float64, place [10]int) outStruct {
+    info := outStruct{name: name, age: age, height: height, places: innerStruct{localPlace: place}}
+    return info
+}
+
+func main() {
+    fmt.Println("-----This is main function------")
+    locations := [10]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10} // Ensure array has 10 elements
+    iterate := init121("puneet", 61, 88.2, locations)
+
+
+    for i := 0; i < len(iterate.places.localPlace); i++ {
+        fmt.Println("-------line no 25-------", iterate.places.localPlace[i])
+    }
+}
